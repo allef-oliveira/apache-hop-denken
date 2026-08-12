@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: hop-postgres-aula04
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: hop_aula04
+      POSTGRES_USER: hop
+      POSTGRES_PASSWORD: hop123
+    ports:
+      - "5433:5432"
+    volumes:
+      - hop_postgres_aula04_data:/var/lib/postgresql/data
+      - ./init_aula04.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+
+volumes:
+  hop_postgres_aula04_data:
