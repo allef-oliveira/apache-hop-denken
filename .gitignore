@@ -1,0 +1,71 @@
+# Environment variables
+
+.env
+.env.*
+!.env.example
+
+# Secrets and credentials
+
+*.secret
+*.secrets
+secrets/
+credentials/
+
+# Private keys and certificates
+
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Apache Hop runtime/local files
+
+.hop/
+*.log
+
+# Temporary files
+
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# Generated outputs
+
+output/
+outputs/
+generated/
+exports/
+
+# Local/private datasets
+
+datasets/private/
+datasets/local/
+
+# Local database data/volumes
+
+database/data/
+database/postgres-data/
+postgres-data/
+
+# IDEs
+
+.idea/
+.vscode/
+*.iml
+.crossnote
+
+# Operating system
+
+.DS_Store
+Thumbs.db
+desktop.ini
+.directory
+
+# Cache
+
+.cache/

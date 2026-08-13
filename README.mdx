@@ -1,0 +1,254 @@
+# Denken Apache Hop Hands-on
+
+Hands-on project developed during the **Apache Hop module of the Denken course**, created to document practical exercises involving data integration, transformation, enrichment, and processing with Apache Hop.
+
+## About the Project
+
+This repository contains practical exercises developed with **Apache Hop**, integrating data from different sources:
+
+* CSV files
+* Excel spreadsheets
+* PostgreSQL database
+
+The initial pipeline demonstrates the ingestion of disconnected datasets, manipulation and enrichment of columns, and integration of the resulting data through join operations.
+
+## Current Pipeline
+
+The pipeline currently works with three different data sources:
+
+```text
+CSV ───────────┐
+               │
+Excel ─────────┼──> Transformation ──> Enrichment ──> Join ──> Result
+               │
+PostgreSQL ────┘
+```
+
+The exercise includes:
+
+* Reading CSV files
+* Reading Excel spreadsheets
+* Reading data from PostgreSQL
+* Manipulating columns
+* Creating and enriching fields
+* Joining data from different sources
+* Validating the resulting data
+
+## Project Structure
+
+```text
+.
+├── database
+│   ├── consultas_validacao.sql
+│   ├── docker-compose.yml
+│   ├── init_aula04.sql
+│   └── reset_aula04.sql
+├── datasets
+│   ├── metas_producao.xlsx
+│   └── producao_limpa_aula04.csv
+├── metadata
+│   └── rdbms
+│       └── PostgreSQL_Aula04.json
+├── pipelines
+│   └── filename.hpl
+├── project-config.json
+├── README.mdx
+└── roteiros
+```
+
+### `database/`
+
+Contains the PostgreSQL environment and supporting SQL scripts used during the exercise.
+
+* `docker-compose.yml` — creates the local PostgreSQL environment used by the project.
+* `init_aula04.sql` — initializes the database and required data.
+* `reset_aula04.sql` — resets the exercise database.
+* `consultas_validacao.sql` — contains SQL queries used to validate the results generated during the exercise.
+
+### `datasets/`
+
+Contains the source files processed by Apache Hop.
+
+* `metas_producao.xlsx` — production target data provided through an Excel spreadsheet.
+* `producao_limpa_aula04.csv` — production data provided through CSV.
+
+These files are kept in the repository because they are part of the educational exercise and allow the pipeline to be reproduced.
+
+### `metadata/`
+
+Contains Apache Hop metadata used by the project.
+
+```text
+metadata/rdbms/PostgreSQL_Aula04.json
+```
+
+This file defines the PostgreSQL database connection used by Apache Hop.
+
+Sensitive credentials should not be stored directly in version-controlled files.
+
+### `pipelines/`
+
+Contains the Apache Hop pipelines (`.hpl`) developed during the module.
+
+The current pipeline performs operations such as:
+
+* Data ingestion
+* Column manipulation
+* Data enrichment
+* Dataset joining
+* Data integration
+
+### `project-config.json`
+
+Apache Hop project configuration file.
+
+It defines project-level settings required to open and execute the project correctly inside Apache Hop.
+
+### `roteiros/`
+
+Contains supporting material and exercise instructions used during the practical activities.
+
+## Technologies
+
+* Apache Hop
+* PostgreSQL
+* Docker
+* Docker Compose
+* SQL
+* CSV
+* Microsoft Excel
+
+## Requirements
+
+To reproduce the project locally, you will need:
+
+* Apache Hop
+* Docker
+* Docker Compose
+
+## Running the Project
+
+### 1. Clone the repository
+
+```bash
+git clone <repository-url>
+cd <repository-name>
+```
+
+### 2. Start PostgreSQL
+
+From the project root:
+
+```bash
+docker compose -f database/docker-compose.yml up -d
+```
+
+The PostgreSQL container will be initialized using the database scripts provided by the project.
+
+### 3. Open Apache Hop
+
+Start Apache Hop GUI and open the project using:
+
+```text
+project-config.json
+```
+
+### 4. Check the PostgreSQL connection
+
+The database metadata used by Apache Hop is located at:
+
+```text
+metadata/rdbms/PostgreSQL_Aula04.json
+```
+
+Make sure its connection settings match the PostgreSQL environment started through Docker Compose.
+
+### 5. Run the pipeline
+
+Open the pipeline located in:
+
+```text
+pipelines/
+```
+
+and execute it through Apache Hop GUI.
+
+### 6. Validate the results
+
+The SQL queries available in:
+
+```text
+database/consultas_validacao.sql
+```
+
+can be used to check the resulting data in PostgreSQL.
+
+## Data Sources
+
+The exercise demonstrates the integration of disconnected data sources.
+
+### CSV
+
+```text
+datasets/producao_limpa_aula04.csv
+```
+
+Contains production-related data.
+
+### Excel
+
+```text
+datasets/metas_producao.xlsx
+```
+
+Contains production targets used to enrich the production dataset.
+
+### PostgreSQL
+
+The PostgreSQL database provides additional relational data used during the integration process.
+
+Apache Hop combines these sources into a single processing flow.
+
+## Security
+
+This repository is public and intended for educational and portfolio purposes.
+
+Sensitive information should never be committed, including:
+
+* Database passwords
+* Private connection strings
+* API keys
+* Production credentials
+* Private certificates
+* Personal or company-sensitive datasets
+
+If credentials are required in future exercises, prefer environment variables or local configuration files excluded through `.gitignore`.
+
+## Learning Goals
+
+This project demonstrates practical experience with:
+
+* Apache Hop projects
+* Apache Hop pipelines
+* ETL concepts
+* Multiple data sources
+* CSV ingestion
+* Excel ingestion
+* PostgreSQL integration
+* Data transformation
+* Data enrichment
+* Dataset joins
+* SQL validation
+* Local database environments with Docker
+
+## Course
+
+Developed during the **Apache Hop module of the Denken course**.
+
+This repository serves as a record of the practical activities completed during the module and as part of a data engineering learning portfolio.
+
+## Disclaimer
+
+This repository was created for educational purposes.
+
+The datasets and database structures included here are intended exclusively for learning and demonstration.
